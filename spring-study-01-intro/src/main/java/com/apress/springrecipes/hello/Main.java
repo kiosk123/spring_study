@@ -9,5 +9,6 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(BeansConfig.class);
         HelloWorld helloWorld = context.getBean(HelloWorld.class);
         helloWorld.hello();
+        helloWorld.getHolidays().forEach(h -> System.out.println(h.getDay()));
     }
 }

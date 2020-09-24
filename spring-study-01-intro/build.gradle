@@ -7,12 +7,15 @@
  */
 mainClassName = "com.apress.springrecipes.hello.Main"
 
+configurations.implementation.setCanBeResolved(true)
+
 jar {
-    baseName = "${rootProject.name}"
+    baseName = "${project.name}"
     version =  "0.0.1-SNAPSHOT"
     manifest {
-        attributes "Implementation-Title": "${rootProject.name}",
+        attributes "Implementation-Title": "${project.name}",
                    "Implementation-Version": version,
-                   "Main-Class": "${mainClassName}"
+                   "Main-Class": "${mainClassName}",
+                   "Class-Path": configurations.implementation.resolve().collect { it.getName() }.join(' ')
     }
 }
