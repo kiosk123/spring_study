@@ -9,6 +9,13 @@ mainClassName = "com.apress.springrecipes.hello.Main"
 
 configurations.implementation.setCanBeResolved(true)
 
+task dependJarCopy(type: Copy) {
+    from configurations.implementation.resolve() //대상파일 경로   
+    into jar.destinationDir       //목적지 경로
+    
+    include "**/*.jar"
+}
+
 jar {
     baseName = "${project.name}"
     version =  "0.0.1-SNAPSHOT"
