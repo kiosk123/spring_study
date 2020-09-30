@@ -7,14 +7,19 @@
  */
 mainClassName = "com.apress.springrecipes.hello.Main"
 
-configurations.implementation.setCanBeResolved(true)
-
 task dependJarCopy(type: Copy) {
-    from configurations.implementation.resolve() //대상파일 경로   
+    from configurations.compileClasspath//대상파일 경로   
     into jar.destinationDir       //목적지 경로
     
     include "**/*.jar"
 }
+
+task list(dependsOn: configurations.compileClasspath) {
+    doLast {
+        println "classpath = ${configurations.compileClasspath.collect { File file -> file.name }}"
+    }
+}
+
 
 jar {
     baseName = "${project.name}"
@@ -23,6 +28,6 @@ jar {
         attributes "Implementation-Title": "${project.name}",
                    "Implementation-Version": version,
                    "Main-Class": "${mainClassName}",
-                   "Class-Path": configurations.implementation.resolve().collect { it.getName() }.join(' ')
+                   "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' ')
     }
 }
