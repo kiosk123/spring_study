@@ -6,3 +6,6 @@
 
 1. spring-study-01-intro
   - 스프링 프로젝트 기본 구조
+2. spring-study-02-core
+  - 스프링 주요 기능
+  
