@@ -7,18 +7,18 @@
  */
 mainClassName = "com.apress.springrecipes.hello.Main"
 
-task dependJarCopy(type: Copy) {
-    from configurations.compileClasspath//대상파일 경로   
-    into jar.destinationDir       //목적지 경로
+// task dependJarCopy(type: Copy) {
+//     from configurations.compileClasspath//대상파일 경로   
+//     into jar.destinationDir       //목적지 경로
     
-    include "**/*.jar"
-}
+//     include "**/*.jar"
+// }
 
-task list(dependsOn: configurations.compileClasspath) {
-    doLast {
-        println "classpath = ${configurations.compileClasspath.collect { File file -> file.name }}"
-    }
-}
+// task list(dependsOn: configurations.compileClasspath) {
+//     doLast {
+//         println "classpath = ${configurations.compileClasspath.collect { File file -> file.name }}"
+//     }
+// }
 
 
 jar {
