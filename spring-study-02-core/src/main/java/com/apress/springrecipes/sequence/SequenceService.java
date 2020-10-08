@@ -35,6 +35,8 @@ import org.springframework.stereotype.Component;
  * public void setSequenceDao(@Qualifier("sequenceDao") SequenceDao sequenceDao) {
  *    this.sequenceDao = sequenceDao;
  * }
+ * 
+ * @Resource = @Autowire + @Qualifier
  */
 
 @Primary
@@ -42,7 +44,7 @@ import org.springframework.stereotype.Component;
 public class SequenceService {
     
     @Autowired 
-//    @Qualifier("sequenceDao")
+    @Qualifier("sequenceDao")
     private SequenceDao sequenceDao;
 
     
