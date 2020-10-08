@@ -9,3 +9,5 @@
 2. spring-study-02-core
   - 애너테이션 사용하기 
     - @Configuration, @Bean, @Component, @Qualifier, @Autowire, @Primary, @Resourece, @Scope, @PropertySorce, @PostConstruct
+  - 다국어 처리 
+    - MessageSource
