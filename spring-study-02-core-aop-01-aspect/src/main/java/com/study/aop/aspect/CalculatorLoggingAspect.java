@@ -41,7 +41,7 @@ public class CalculatorLoggingAspect implements Ordered {
     private void loggingOperation() {}
 
     //조인포인트 정보 가져오기
-    @Before("AspectCommon.loggingOperation()") //포인트 컷 재활용
+    @Before("AspectCommon.loggingOperation()") //애너테이션 포인트 컷 참조
     public void logJoinPoint(JoinPoint jp) {
         log.info("Join point kind : {}", jp.getKind());
         log.info("Signature declaring type : {}", 
