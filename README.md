@@ -18,3 +18,5 @@
     - BeanPostProcessor
   - 팩토리로 POJO 생성
     - AbstractFactoryBean
+  - 프로파일(@Profile) 설정
+    - 개발, 운영, 테스트 환경에 따라 프로파일 별로 빈로드 
