@@ -25,4 +25,10 @@ public class AspectCommon {
      * within(ArithmeticCalculator+) 인터페이스를 구현한 모든 클래스의 메서드 실행 조인포인트를 매치
      * 
      */
+    
+    /**
+     * @LoggingRequired 애너테이션이 붙은 대상(클래스나 메소드)을 조인포인트로 설정
+     */
+    @Pointcut("@annotation(com.study.aop.anno.LoggingRequired)")
+    public void loggingAnnotation() {};
 }
