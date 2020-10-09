@@ -3,6 +3,11 @@ package com.study.aop;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * 복소수를 문자열로 바꿀때 사용한다.
+ * @author USER
+ *
+ */
 @Component
 public class ComplexFormatter {
 

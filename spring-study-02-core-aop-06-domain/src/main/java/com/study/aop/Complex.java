@@ -4,7 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
+/**
+ * 
+ * @Configurable + @Component의 컴플렉스 형 객체
+ * 즉 @Configurable를 인스턴스화 한 것이다.
+ *
+ */
 @Configurable
 @Component
 @Scope("prototype")
