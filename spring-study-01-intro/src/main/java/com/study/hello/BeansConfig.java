@@ -1,4 +1,4 @@
-package com.apress.springrecipes.hello;
+package com.study.hello;
 
 import java.util.List;
 
