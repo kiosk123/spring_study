@@ -1,0 +1,33 @@
+/**
+    AOP dependency
+*/
+dependencies {
+    implementation "org.aspectj:aspectjrt:1.8.13"
+    implementation "org.aspectj:aspectjweaver:1.8.13"
+}
+
+jar {
+    baseName = "${project.name}"
+    version =  "0.0.1-SNAPSHOT"
+    manifest {
+        attributes "Implementation-Title": "${project.name}",
+                   "Implementation-Version": version,
+                   "Main-Class": "com.study.aop.Main",
+                   "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' ')
+    }
+}
+
+task dependJarCopy(type: Copy) {
+    from configurations.compileClasspath//대상파일 경로   
+    into jar.destinationDir       //목적지 경로
+    
+    include "**/*.jar"
+}
+
+// task list(dependsOn: configurations.compileClasspath) {
+//     doLast {
+//         println "classpath = ${configurations.compileClasspath.collect { File file -> file.name }}"
+//     }
+// }
+
+
