@@ -1,0 +1,21 @@
+1.용도
+  IoC 컨테이너 내부에서만 작동하며, 빈에서 컨테이너 리소스를 인지하는 데 사용
+
+2.종류
+  BeanNameAware - IoC 컨테이너에 구성된 인스턴스의 빈 이름
+  BeanFactoryAware - 현재 빈 팩토리, 컨테이너 서비스를 호출하는 데 사용
+  ApplicationContextAware - 현재 애플리케이션 컨텍스트, 컨테이너 서비스를 호출하는 데 사용
+  MessageSourceAware - 메시지소스, 텍스트 메시지를 해석하는 데 사용
+  ApplicationEventPublisherAware - 애플리케이션 이벤트 발행기(퍼블리셔), 애플리케이션 이벤트를 발생하는데 사용
+  ResourceLoaderAware - 리소스 로더, 외부 리소스를 로드하는데 사용
+  EnvironmentAware - ApplicationContext 인터페이스에 묶인 org.springframework.cor.env.Enviroment 인스턴스
+  
+  
+3.특징
+  Aware 인터페이스의 세터 메서드는 스프링이 빈 프로퍼티를 설정한 이후, 초기화 콜백 메서드를 호출하기 이전에 호출
+  1. 생성자나 팩터리 메서드를 호출해 빈 인스턴스 생성
+  2. 빈 프로퍼티에 값, 빈 레퍼런스를 설정
+  3. Aware 인터페이스에 정의한 세터 메서드를 호출
+  4. 빈 인스턴스를 각 빈 후처리기에 있는 postProcessBeforeInitailiztion() 메서드로 넘겨 초기화 콜백 메서드를 호출
+  5. 빈 인스턴스를 각 빈 후처리기 postProcessAfterInitailization() 메서드로 넘김, 빈 사용준비 완료
+  6. 컨테이너가 종료되면 폐기 콜백 메서드를 호출

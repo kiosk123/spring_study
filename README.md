@@ -20,3 +20,5 @@
     - AbstractFactoryBean
   - 프로파일(@Profile) 설정
     - 개발, 운영, 테스트 환경에 따라 프로파일 별로 빈로드 
+  - Aware인터페이스 구현하여 IoC 컨테이너 리소스 인지
+  
