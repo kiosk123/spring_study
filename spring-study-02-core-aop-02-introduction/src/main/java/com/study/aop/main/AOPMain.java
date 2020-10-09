@@ -35,10 +35,10 @@ public class AOPMain {
         
         
         Counter arithmeticCounter = (Counter)arithmeticCalculator;
-        System.out.println("ArithmeticCalculator method call count : " + arithmeticCounter.getCount());
+        System.out.println("ArithmeticCalculator method call count : " + arithmeticCounter.getCount()); //2
         
         Counter unitCounter = (Counter)unitCalculator;
-        System.out.println("UnitCalculator method call count : " + unitCounter.getCount());
+        System.out.println("UnitCalculator method call count : " + unitCounter.getCount()); //1
         
     }
 }
