@@ -14,5 +14,7 @@
       @Lazy, @DepandsOn
   - 다국어 처리 
     - MessageSource
-  - 빈 인스턴스 후처리기
+  - 빈 인스턴스 후 처리기
     - BeanPostProcessor
+  - 팩토리로 POJO 생성
+    - AbstractFactoryBean
