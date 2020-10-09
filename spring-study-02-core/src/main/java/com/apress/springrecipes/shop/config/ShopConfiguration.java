@@ -9,6 +9,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 import com.apress.springrecipes.shop.Battery;
+import com.apress.springrecipes.shop.Cashier;
 import com.apress.springrecipes.shop.Disc;
 import com.apress.springrecipes.shop.Product;
 
@@ -67,6 +68,18 @@ public class ShopConfiguration {
         return messageSource;
     }
     
+    /**
+     * initMethod = @PostConstruct
+     * destroyMethod = @PreDestory
+     */
+    @Bean(name = "cashier2", initMethod = "openFile", destroyMethod = "closeFile")
+    public Cashier cashier() {
+        String path = System.getProperty("java.io.tmpdir") + "/cashier";
+        Cashier c1 = new Cashier();
+        c1.setFileName("checkout");
+        c1.setPath(path);
+        return c1;
+    }
     
     /**
      * @PropertySource 사용시 세트로 함께 사용한다.
