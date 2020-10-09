@@ -60,15 +60,7 @@ public class CalculatorLoggingAspect implements Ordered {
      */
     @Before("execution(* com.study.aop.ArithmeticCalculator.add(..))")
     public void logBefore(JoinPoint jp) {
-        log.info("The method add() begins");
-        Object[] params = jp.getArgs();
-        if (params != null && params.length > 0) {
-           int num = 1;
-           for (Object param : params) {
-               log.info("passing the param {} : value {}", num, param);
-               num++;
-           }
-        }
+        log.info("The method {}() begins", jp.getSignature().getName());
     }
     
     /**
@@ -126,5 +118,14 @@ public class CalculatorLoggingAspect implements Ordered {
         }
 
         return result;
+    }
+    
+    /**
+     * args를 이용하여 포인트 컷 매개변수 선언 가능 이걸 이용해서 타겟 매개변수 포착가능 
+     */
+    @Before("execution(* *.*(..)) && target(target) && args(a,b)")
+    public void logParameter(Object target, double a, double b) {
+        log.info("Target class : " + target.getClass().getName());
+        log.info("Arguments : " + a + ", " + b);
     }
 }
