@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -73,6 +74,7 @@ public class ShopConfiguration {
      * destroyMethod = @PreDestory
      */
     @Bean(name = "cashier2", initMethod = "openFile", destroyMethod = "closeFile")
+    @Lazy
     public Cashier cashier() {
         String path = System.getProperty("java.io.tmpdir") + "/cashier";
         Cashier c1 = new Cashier();

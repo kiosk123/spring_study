@@ -60,6 +60,7 @@ public class Cashier {
     
     @PostConstruct
     public void openFile() throws IOException {
+        System.out.println("====== Casher Load ======");
         File targetDir = new File(path);
         if (!targetDir.exists()) {
             targetDir.mkdir();

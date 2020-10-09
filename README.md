@@ -11,6 +11,8 @@
     - @Configuration, @Bean, @Component, @Qualifier  
       @Autowire, @Primary, @Resourece, @Scope  
       @PropertySorce, @PostConstruct, @PreDestory  
-      @Lazy
+      @Lazy, @DepandsOn
   - 다국어 처리 
     - MessageSource
+  - 빈 인스턴스 후처리기
+    - BeanPostProcessor
