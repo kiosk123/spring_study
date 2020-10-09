@@ -22,8 +22,10 @@
     - 개발, 운영, 테스트 환경에 따라 프로파일 별로 빈로드 
   - Aware인터페이스 구현하여 IoC 컨테이너 리소스 인지
   - Aspect-Oriented Programming(AOP)
-    - @Before, @After, @AfterReturing, @AfterThrowing, @Around
+    - @Before, @After, @AfterReturing, @AfterThrowing, @Around, @Pointcut
     - 기본은 다이나믹 프록시 사용 (인터페이스 기반) - @EnableAspectAutoProxy
     - CGLIB 프록시도 가능(클래스기반) - @EnableAspectAutoProxy(proxyTargetClass=true)
+    - Pointcut 안에는 execute(메서드기반) within(타입기반) 키워드 사용하여 조인포인트 매칭
+    - 포인트컷으로 애너테이션도 사용가능
 
   

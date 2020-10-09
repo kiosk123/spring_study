@@ -1,15 +1,9 @@
 package com.study.aop;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
-import com.study.aop.aspect.CalculatorLogginAspect;
 
 @Component("arithmeticCalculator")
 public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
-
-    private final static Logger log = LoggerFactory.getLogger(CalculatorLogginAspect.class);
     
     @Override
     public double add(double a, double b) {

@@ -20,12 +20,12 @@ import org.springframework.stereotype.Component;
  * 포인트 컷은 어드바이스에 적용할 타입 및 객체를 찾는 표현식
  * 상세내용 참조
  * https://blog.naver.com/heo9910/220802922716
+ * www.eclipse.org/aspectj/
  */
 @Aspect
 @Component
-public class CalculatorLogginAspect implements Ordered {
-    private final static Logger log = LoggerFactory.getLogger(CalculatorLogginAspect.class);
-    
+public class CalculatorLoggingAspect implements Ordered {
+    private final static Logger log = LoggerFactory.getLogger(CalculatorLoggingAspect.class);
     
     @Override
     public int getOrder() {
@@ -56,6 +56,7 @@ public class CalculatorLogginAspect implements Ordered {
      * 접근 제한자 public protected private 모두 매치하면서
      * 모든 반환형을 매치하고 ArithmeticCalculator의 
      * n개(0개포함)의 인수를 갖고 있는 add() 메소드 호출전 실행
+     * 포인트 컷 대상이 같은 패키지에 있는 경우 패키지명은 생략 가능
      */
     @Before("execution(* com.study.aop.ArithmeticCalculator.add(..))")
     public void logBefore(JoinPoint jp) {
@@ -82,8 +83,12 @@ public class CalculatorLogginAspect implements Ordered {
     /**
      * @AfterReturning 조인포인트의 실행 성공여부와 상관없이 동작
      * 조인포인트에서 값을 반환하는 경우에만 실행하고 싶을때 사용
+     * 
+     * AspectCommon.loggingOperation()은 AspectCommon 클래스에 
+     * 접근 제한자가 public이고 메소드명이 loggingOperation()으로 선언된 포인트컷 참조.
+     * 패키지가 다를경우 패키지 명까지 선언
      */
-    @AfterReturning(pointcut = "loggingOperation()", returning = "result") //포인트 컷 재활용
+    @AfterReturning(pointcut = "AspectCommon.loggingOperation()", returning = "result") 
     public void logAfterReturning(JoinPoint jp, Object result) {
         log.info("The method {}() ends with {}", jp.getSignature().getName(), result);
     }

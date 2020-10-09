@@ -4,8 +4,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.study.aop.ArithmeticCalculator;
+import com.study.aop.LoggingRequiredTarget;
+import com.study.aop.ParamsPointCutTarget;
 import com.study.aop.UnitCalculator;
-import com.study.aop.UnitCalculatorImpl;
 import com.study.aop.config.CalculatorConfiguration;
 
 public class AOPMain {
@@ -23,6 +24,12 @@ public class AOPMain {
         
         arithmeticCalculator.sub(12, 0);
 //        arithmeticCalculator.div(12, 0); //throw IllegalArgumentException
+        
+        LoggingRequiredTarget lrt = context.getBean(LoggingRequiredTarget.class);
+        lrt.call();
+        
+        ParamsPointCutTarget ppct = context.getBean(ParamsPointCutTarget.class);
+        ppct.printParams(1, 1.2);
 
     }
 
