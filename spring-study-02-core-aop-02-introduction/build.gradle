@@ -1,0 +1,7 @@
+/**
+    AOP dependency
+*/
+dependencies {
+    implementation "org.aspectj:aspectjrt:1.8.13"
+    implementation "org.aspectj:aspectjweaver:1.8.13"
+}
