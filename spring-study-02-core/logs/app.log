@@ -1,0 +1,2 @@
+2020-10-09 17:25:38,003 INFO org.springframework.context.annotation.AnnotationConfigApplicationContext [main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@39fb3ab6: startup date [Fri Oct 09 17:25:38 KST 2020]; root of context hierarchy
+2020-10-09 17:25:38,422 INFO com.study.aop.aspect.CalculatorLogginAspect [main] The method add() begins

@@ -51,7 +51,12 @@ subprojects {
 	dependencies {
 	    implementation "org.springframework:spring-core:${springVersion}"
 	    implementation "org.springframework:spring-context:${springVersion}"
-	    implementation "org.slf4j:slf4j-simple:1.7.25"
+		implementation "org.springframework:spring-beans:${springVersion}"
+	    
+		//logging 설정 
+		//implementation "org.slf4j:slf4j-simple:1.7.25"
+		implementation'ch.qos.logback:logback-classic:1.2.3'
+		// implementation'ch.qos.logback:logback-core:1.2.3'
 	    testImplementation 'junit:junit:4.13'
 	}
 }
