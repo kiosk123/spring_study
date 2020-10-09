@@ -1,4 +1,4 @@
-package com.apress.springrecipes.calculator;
+package com.study.aop;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

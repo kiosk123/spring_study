@@ -1,4 +1,4 @@
-package com.apress.springrecipes.calculator;
+package com.study.aop;
 
 import org.springframework.stereotype.Component;
 

@@ -3,10 +3,10 @@
 
 <aspectj>
     <weaver>
-        <include within="com.apress.springrecipes.calculator.*"/>
+        <include within="com.study.aop.*"/>
     </weaver>
 
     <aspects>
-        <aspect name="com.apress.springrecipes.calculator.ComplexCachingAspect"/>
+        <aspect name="com.study.aop.ComplexCachingAspect"/>
     </aspects>
 </aspectj>
