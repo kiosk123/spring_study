@@ -12,6 +12,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,8 +22,25 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class CalculatorLogginAspect {
+public class CalculatorLogginAspect implements Ordered {
     private final static Logger log = LoggerFactory.getLogger(CalculatorLogginAspect.class);
+    
+    @Override
+    public int getOrder() {
+        return 1;
+    }
+
+    //조인포인트 정보 가져오기
+    @After("execution(* *.*(..))")
+    public void logJoinPoint(JoinPoint jp) {
+        log.info("Join point kind : {}", jp.getKind());
+        log.info("Signature declaring type : {}", 
+                jp.getSignature().getDeclaringType());
+        log.info("Signature name : {}", jp.getSignature().getName());
+        log.info("Arguments : {}", Arrays.toString(jp.getArgs()));
+        log.info("Target class : {}", jp.getTarget().getClass().getName()); //타겟 정보
+        log.info("This class : {}", jp.getThis().getClass().getName()); //프록시 정보
+    }
     
     /**
      * 접근 제한자 public protected private 모두 매치하면서

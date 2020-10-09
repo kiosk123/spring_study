@@ -22,7 +22,7 @@ public class AOPMain {
         unitCalculator.kilogramToPound(10);
         
         arithmeticCalculator.sub(12, 0);
-        arithmeticCalculator.div(12, 0);
+//        arithmeticCalculator.div(12, 0); //throw IllegalArgumentException
 
     }
 
