@@ -3,6 +3,8 @@ package com.study.aop.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +22,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CalculatorValidationAspect implements Ordered {
     
+    private final static Logger log = LoggerFactory.getLogger(CalculatorValidationAspect.class);
+    
     @Before("execution(* *.*(double, double))")
     public void validateBefore(JoinPoint jp) {
+        log.info("check method {}() params ", jp.getSignature().getName());
         for (Object arg : jp.getArgs()) {
             validate((Double) arg);
         }

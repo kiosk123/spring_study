@@ -11,3 +11,4 @@ rootProject.name = 'spring-study'
 
 include "spring-study-01-intro"
 include "spring-study-02-core"
+include "spring-study-02-core-aop-01-aspect"
