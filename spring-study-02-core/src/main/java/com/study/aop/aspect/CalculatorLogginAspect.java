@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -25,13 +26,22 @@ import org.springframework.stereotype.Component;
 public class CalculatorLogginAspect implements Ordered {
     private final static Logger log = LoggerFactory.getLogger(CalculatorLogginAspect.class);
     
+    
     @Override
     public int getOrder() {
         return 1;
     }
+    
+    /**
+     * 포인트 컷 재활용 위한 포인트 컷 선언
+     * 여러 애스펙트가 포인트 컷을 공유하는 경우라면 공통 클래스에 선언 후
+     * 접근제한자는 public으로 선언
+     */
+    @Pointcut("execution(* *.*(..))") 
+    private void loggingOperation() {}
 
     //조인포인트 정보 가져오기
-    @After("execution(* *.*(..))")
+    @Before("loggingOperation()") //포인트 컷 재활용
     public void logJoinPoint(JoinPoint jp) {
         log.info("Join point kind : {}", jp.getKind());
         log.info("Signature declaring type : {}", 
@@ -73,7 +83,7 @@ public class CalculatorLogginAspect implements Ordered {
      * @AfterReturning 조인포인트의 실행 성공여부와 상관없이 동작
      * 조인포인트에서 값을 반환하는 경우에만 실행하고 싶을때 사용
      */
-    @AfterReturning(value = "execution(* *.*(..))", returning = "result")
+    @AfterReturning(pointcut = "loggingOperation()", returning = "result") //포인트 컷 재활용
     public void logAfterReturning(JoinPoint jp, Object result) {
         log.info("The method {}() ends with {}", jp.getSignature().getName(), result);
     }
