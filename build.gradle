@@ -52,6 +52,7 @@ subprojects {
 	    implementation "org.springframework:spring-core:${springVersion}"
 	    implementation "org.springframework:spring-context:${springVersion}"
 		implementation "org.springframework:spring-beans:${springVersion}"
+		implementation "org.springframework:spring-aspects:${springVersion}"
 	    
 		//logging 설정 
 		//implementation "org.slf4j:slf4j-simple:1.7.25" //설정시 logback.xml 파일 안 읽 
