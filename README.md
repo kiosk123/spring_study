@@ -27,5 +27,11 @@
     - CGLIB 프록시도 가능(클래스기반) - @EnableAspectAutoProxy(proxyTargetClass=true)
     - Pointcut 안에는 execute(메서드기반) within(타입기반) 키워드 사용하여 조인포인트 매칭
     - 포인트컷으로 애너테이션도 사용가능
+    - 인트로덕션  (@DeclareParents)
+             객체가 어떤 인터페이스의 구현 클래스를 공급받아 동적으로 인터페이스를 구현
+             마치 객체가 런타임에 구현 클래스를 상속하게 보이는 척하게 함  
+             동시에 여러개를 인트로듀스(끌어들일)수 있어서 다중 상속도 가능함
+    - POJO에 상태 추가하
+    
 
   
