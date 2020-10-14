@@ -7,10 +7,13 @@ import java.util.Objects;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.study.mvc.vo.Player;
 import com.study.mvc.vo.Reservation;
 import com.study.mvc.vo.SportType;
 
+@Service
 public class ReservationServiceImpl implements ReservationService {
     
     public static final SportType TENNIS = new SportType(1, "Tennis");
@@ -19,9 +22,9 @@ public class ReservationServiceImpl implements ReservationService {
     private final List<Reservation> reservations = new ArrayList<>();
     
     public ReservationServiceImpl() { 
-        reservations.add(new Reservation("Tennis #1",LocalDate.of(2008, 1, 14) , 16,
+        reservations.add(new Reservation("Tennis #1",java.sql.Date.valueOf(LocalDate.of(2008, 1, 14)) , 16,
                 new Player("Roger", "N/A"), TENNIS));
-        reservations.add(new Reservation("Tennis #2",LocalDate.of(2008, 1, 14) , 20,
+        reservations.add(new Reservation("Tennis #2",java.sql.Date.valueOf(LocalDate.of(2008, 1, 14)) , 20,
                 new Player("James", "N/A"), TENNIS));
     }
 

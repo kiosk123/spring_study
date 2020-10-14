@@ -5,6 +5,7 @@ plugins {
 
 gretty {
     httpPort = 8080
+    managedClassReload = true
 }
 
 dependencies {

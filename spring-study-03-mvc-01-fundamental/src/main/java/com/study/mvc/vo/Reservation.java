@@ -1,19 +1,18 @@
 package com.study.mvc.vo;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Reservation {
     
     private String courtName;
-    private LocalDate date;
+    private Date date;
     private int hour;
     private Player player;
     private SportType sportType;
     
     public Reservation() { }
 
-    public Reservation(String courtName, LocalDate date, int hour, Player player, SportType sportType) {
+    public Reservation(String courtName, Date date, int hour, Player player, SportType sportType) {
         this.courtName = courtName;
         this.date = date;
         this.hour = hour;
@@ -27,10 +26,10 @@ public class Reservation {
     public void setCourtName(String courtName) {
         this.courtName = courtName;
     }
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     public int getHour() {
