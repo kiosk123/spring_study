@@ -1,18 +1,19 @@
 package com.study.mvc.service;
 
-import org.springframework.stereotype.Service;
-
-import com.study.mvc.vo.PeriodicReservation;
-import com.study.mvc.vo.Player;
-import com.study.mvc.vo.Reservation;
-import com.study.mvc.vo.SportType;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.study.mvc.exception.ReservationNotAvailableException;
+import com.study.mvc.vo.PeriodicReservation;
+import com.study.mvc.vo.Player;
+import com.study.mvc.vo.Reservation;
+import com.study.mvc.vo.SportType;
 
 
 @Service
