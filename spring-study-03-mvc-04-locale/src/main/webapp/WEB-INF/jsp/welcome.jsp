@@ -1,5 +1,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <html>
 <head>
     <title>Welcome</title>
@@ -11,6 +10,9 @@ Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/>.
 
 <hr/>
 Handling time : ${handlingTime} ms
+
+<br/>
+Locale : ${pageContext.response.locale}
 
 </body>
 </html>
