@@ -3,6 +3,7 @@ package com.study.mvc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,6 +41,12 @@ public class MemberController {
         
         model.addAttribute("member", foundMember);
         return "member";
+    }
+    
+    @RequestMapping(value = "processUser", method = RequestMethod.POST) // = @PostMapping
+    public String submitForm(Member member, BindingResult result, Model mode) {
+        //TODO
+        return null;
     }
     
     @RequestMapping
