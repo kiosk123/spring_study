@@ -3,6 +3,7 @@ package com.study.mvc.web.view;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import com.study.mvc.domain.Reservation;
@@ -14,6 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ResourceBundle view resolver를 사용하여 빈등록 하여 같은 빈이름으로 
+ * 컨텐트 협상을 통해 pdf와 excel을 다운 받을 수 있게 한다.
+ */
 public class ExcelReservationSummary extends AbstractXlsxView {
 
     @Override

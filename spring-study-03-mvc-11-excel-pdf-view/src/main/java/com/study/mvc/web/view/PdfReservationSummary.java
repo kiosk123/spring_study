@@ -6,6 +6,7 @@ import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 import com.study.mvc.domain.Reservation;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ResourceBundle view resolver를 사용하여 빈등록 하여 같은 빈이름으로 
+ * 컨텐트 협상을 통해 pdf와 excel을 다운 받을 수 있게 한다.
+ */
 public class PdfReservationSummary extends AbstractPdfView {
 
     @Override
@@ -34,7 +39,6 @@ public class PdfReservationSummary extends AbstractPdfView {
     }
 
     private void addContent(Table table, Reservation reservation) throws BadElementException {
-        System.out.println("aaaaaaaaaaaaaaaaaaa");
         table.addCell(reservation.getCourtName());
         table.addCell(reservation.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         table.addCell(Integer.toString(reservation.getHour()));

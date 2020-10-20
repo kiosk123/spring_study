@@ -29,17 +29,17 @@ public class ViewResolverConfiguration implements WebMvcConfigurer {
     }
 
     /**
-     * xml pdf vieㄷㅈ 리졸버 선언
+     * xml pdf view 리졸버 선언
      * @return
      */
-    @Bean
-    public ResourceBundleViewResolver pdfViewResolver() {
-
-        ResourceBundleViewResolver viewResolver = new ResourceBundleViewResolver();
-        viewResolver.setOrder(0);
-        viewResolver.setBasename("court-views-pdf");
-        return viewResolver;
-    }
+//    @Bean
+//    public ResourceBundleViewResolver pdfViewResolver() {
+//
+//        ResourceBundleViewResolver viewResolver = new ResourceBundleViewResolver();
+//        viewResolver.setOrder(0);
+//        viewResolver.setBasename("court-views-pdf");
+//        return viewResolver;
+//    }
 
     @Bean
     public ResourceBundleViewResolver viewResolver() {
