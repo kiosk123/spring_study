@@ -1,6 +1,4 @@
-package com.study.mvc.controller;
-
-import java.util.List;
+package com.study.mvc.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.study.mvc.domain.Reservation;
 import com.study.mvc.service.ReservationService;
-import com.study.mvc.vo.Reservation;
+
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/reservationQuery")
@@ -28,11 +29,15 @@ public class ReservationQueryController {
 
     @PostMapping
     public String sumbitForm(@RequestParam("courtName") String courtName, Model model) {
+
         List<Reservation> reservations = java.util.Collections.emptyList();
+
         if (courtName != null) {
             reservations = reservationService.query(courtName);
         }
+
         model.addAttribute("reservations", reservations);
+
         return "reservationQuery";
     }
 }

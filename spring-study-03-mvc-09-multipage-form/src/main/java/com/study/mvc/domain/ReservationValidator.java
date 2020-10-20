@@ -1,4 +1,4 @@
-package com.study.mvc.vo;
+package com.study.mvc.domain;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -8,10 +8,6 @@ import org.springframework.validation.Validator;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-/**
- * 폼 데이터 전송시 Reservation 객체의 데이터를 검증하기 위한 검증기이다.
- *
- */
 @Component
 public class ReservationValidator implements Validator {
 

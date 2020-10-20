@@ -23,7 +23,7 @@ import com.study.mvc.vo.SportType;
 
 @Controller
 @RequestMapping("/reservationForm")
-@SessionAttributes("reservation")
+@SessionAttributes("reservation") //폼 전송시 에러가 발생할 수 있으므로 SessionAttribute를 활용하여 데이터를 임시저장
 public class ReservationFormController {
 
     private final ReservationService reservationService;
@@ -35,9 +35,17 @@ public class ReservationFormController {
         this.validator = validator;
     }
 
+    /**
+     * 모든 뷰에서 공통적으로 쓸 수 있는 sportTypes를 선언한다.(전역적)
+     */
     @ModelAttribute("sportTypes")
     public List<SportType> populateSportTypes() {
         return reservationService.getAllSportTypes();
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "reservationSuccess")
+    public String reservationSuccess() {
+        return "reservationSuccess";
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -47,7 +55,10 @@ public class ReservationFormController {
 
         Reservation reservation = new Reservation();
         reservation.setPlayer(new Player(username, null));
-
+        
+        /* 다음 modelAttribute에 들어가는 값으로 설정
+         * <form:form method="post" modelAttribute="reservation">
+         */
         model.addAttribute("reservation", reservation);
 
         return "reservationForm";
@@ -55,6 +66,9 @@ public class ReservationFormController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String submitForm(
+            /* 다음 modelAttribute에 들어가는 값으로 설정
+             * <form:form method="post" modelAttribute="reservation">
+             */
             @ModelAttribute("reservation") Reservation reservation,
             BindingResult result, SessionStatus status) {
 
@@ -63,11 +77,13 @@ public class ReservationFormController {
             return "reservationForm";
         } else {
             reservationService.make(reservation);
-            status.setComplete();
+            status.setComplete(); //세션에 있는 객체 삭제
 
-            return "redirect:reservationSuccess";
+            return "redirect:/reservationForm/reservationSuccess";
         }
     }
+    
+    
 
     /**
      * @ExceptionHandler로 예외 매핑한다 작동은 @RequestMapping과 비슷하다
