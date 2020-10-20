@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,10 +31,13 @@ import com.study.mvc.service.ReservationService;
 
 @Controller
 @RequestMapping("/periodicReservationForm")
-@SessionAttributes("reservation")
+// 모든 폼은 modelAttribute="reservation"에 바인딩되므로 데이터가 유실되지 않게 유저 세션에 보관함
+@SessionAttributes("reservation") 
 public class PeriodicReservationController {
 
+    //페이지 번호와 뷰 이름 매핑을 위함 해쉬맵
     private final Map<Integer, String> pageForms = new HashMap<>(3);
+    
     private final ReservationService reservationService;
     private final PeriodicReservationValidator validator;
 
@@ -49,6 +53,17 @@ public class PeriodicReservationController {
         pageForms.put(1, "reservationTimeForm");
         pageForms.put(2, "reservationPlayerForm");
     }
+    
+    /**
+     * 모든 반환 뷰가 참조하는 periods가 바인딩 된 데이터를 반환하는 메소드
+     */
+    @ModelAttribute("periods")
+    public Map<Integer, String> periods() {
+        Map<Integer, String> periods = new HashMap<>();
+        periods.put(1, "Daily");
+        periods.put(7, "Weekly");
+        return periods;
+    }
 
     @GetMapping
     public String setupForm(Model model) {
@@ -59,6 +74,9 @@ public class PeriodicReservationController {
         return "reservationCourtForm";
     }
 
+    /**
+     * _cancel이 들어오면 현제 페이지에서 입력된 모든 값을 취소(초기화)하고 머문다.
+     */
     @PostMapping(params = {"_cancel"})
     public String cancelForm(
             @ModelAttribute("reservation") PeriodicReservation reservation, BindingResult result,
@@ -72,11 +90,14 @@ public class PeriodicReservationController {
         binder.setValidator(this.validator);
     }
 
+    /**
+     * 마법사 폼에서 유저가 finish 버튼을 클릭할때 실행
+     */
     @PostMapping(params = {"_finish"})
     public String completeForm(
             @Validated @ModelAttribute("reservation") PeriodicReservation reservation,
-            BindingResult result, SessionStatus status,
-            @RequestParam("_page") int currentPage) {
+            BindingResult result, SessionStatus status, 
+            @RequestParam("_page") int currentPage, HttpServletRequest request) {
         if (!result.hasErrors()) {
             reservationService.makePeriodic(reservation);
             status.setComplete();
@@ -92,12 +113,15 @@ public class PeriodicReservationController {
             @ModelAttribute("reservation") PeriodicReservation reservation,
             BindingResult result, @RequestParam("_page") int currentPage) {
 
+        //이동한 페이지를 가져옴
         int targetPage = getTargetPage(request, "_target", currentPage);
 
+        //이전 페이지로 이동
         if (targetPage < currentPage) {
             return pageForms.get(targetPage);
         }
 
+        //현재 페이지 검증 처리
         validateCurrentPage(reservation, result, currentPage);
         if (!result.hasErrors()) {
             return pageForms.get(targetPage);
@@ -118,14 +142,6 @@ public class PeriodicReservationController {
                 validator.validatePlayer(reservation, result);
                 break;
         }
-    }
-
-    @ModelAttribute("periods")
-    public Map<Integer, String> periods() {
-        Map<Integer, String> periods = new HashMap<>();
-        periods.put(1, "Daily");
-        periods.put(7, "Weekly");
-        return periods;
     }
 
     private int getTargetPage(HttpServletRequest request, String paramPrefix, int currentPage) {

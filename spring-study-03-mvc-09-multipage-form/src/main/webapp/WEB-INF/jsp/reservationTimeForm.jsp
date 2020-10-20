@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<!-- 마법사 폼 두번째 페이지 -->
+<!-- 모든 폼은 modelAttribute="reservation"에 바인딩 -->
 <form:form method="post" modelAttribute="reservation">
 <table>
   <tr>

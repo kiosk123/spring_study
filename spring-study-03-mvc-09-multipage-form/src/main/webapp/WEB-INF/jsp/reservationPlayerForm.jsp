@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<!-- 마법사 폼 세번째 페이지 -->
+<!-- 모든 폼은 modelAttribute="reservation"에 바인딩 -->
 <form:form method="post" modelAttribute="reservation">
 <table>
   <tr>
@@ -28,7 +30,7 @@
     <td colspan="3">
       <input type="hidden" value="2" name="_page"/>
       <input type="submit" value="Previous" name="_target1" />
-      <input type="submit" value="Finish" name="_finish" />
+      <input type="submit" value="Finish" name="_finish" /> <!-- _finish 폼 작성이 완료되었다는 것을 알림 -->
       <input type="submit" value="Cancel" name="_cancel" />
     </td>
   </tr>
