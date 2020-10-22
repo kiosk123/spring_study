@@ -1,0 +1,17 @@
+plugins {
+    id 'war'
+    id 'org.gretty' version '3.0.3' 
+}
+
+gretty {
+    httpPort = 8080
+    managedClassReload = true
+}
+
+dependencies {
+    implementation "org.springframework:spring-webmvc:5.0.5.RELEASE"
+    implementation "org.springframework:spring-oxm:5.0.5.RELEASE"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.9.3"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.9.3"
+    // implementation "com.google.code.gson:gson:2.8.6" //jackson에서 json으로 마샬링 라이브러리 교체가능 
+}
