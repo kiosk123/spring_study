@@ -1,0 +1,17 @@
+plugins {
+    id 'war'
+    id 'org.gretty' version '3.0.3' 
+}
+
+gretty {
+    httpPort = 8080
+    managedClassReload = true
+}
+
+dependencies {
+    implementation "org.springframework:spring-webmvc:5.0.5.RELEASE"
+    implementation "org.springframework:spring-oxm:5.0.5.RELEASE"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.9.3"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.9.3"
+    implementation "com.rometools:rome:1.9.0" //RSS 라이브러
+}
