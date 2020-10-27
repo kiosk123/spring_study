@@ -1,0 +1,21 @@
+plugins {
+    id 'war'
+    id 'org.gretty' version '3.0.3' 
+}
+
+gretty {
+    httpPort = 8080
+    managedClassReload = true
+}
+
+dependencies {
+    implementation "org.springframework:spring-webmvc:5.0.5.RELEASE"
+    implementation "org.springframework:spring-oxm:5.0.5.RELEASE"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.9.3"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.9.3"
+    implementation "javax.servlet:javax.servlet-api:4.0.0"
+    implementation "javax.servlet:jstl:1.2"
+    implementation "javax.servlet.jsp:javax.servlet.jsp-api:2.3.1"
+    implementation "javax.validation:validation-api:2.0.1.Final"
+    implementation "javax.servlet:jstl:1.2"
+}
