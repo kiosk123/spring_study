@@ -108,6 +108,17 @@ public class ChunkReservationQueryController {
      * 
      * 핸들러 메서드에서 이벤트를 전송하려면 SseEmitter 인스턴스를 만들어 마지막 줄에서 반환한다.
      * http http://localhost:8080/spring-study-05-async-chuck-response/reservationQuery courtName==Tennis#1
+     * 
+     * 
+     * HTTP/1.1 200
+     * Connection: keep-alive
+     * Content-Type: text/event-stream;charset=UTF-8
+     * Date: Tue, 27 Oct 2020 14:42:03 GMT
+     * Keep-Alive: timeout=60
+     * Transfer-Encoding: chunked
+     * 
+     * id:217372331
+     * data:{"courtName":"Tennis#1"...
      */
     @GetMapping(params = "courtName")
     public SseEmitter findAndReturnUsingSseEmitter(@RequestParam("courtName") String courtName) {
