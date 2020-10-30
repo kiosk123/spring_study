@@ -41,9 +41,9 @@
     - TaskExecutor를 이용한 동시성 프로그래밍
     - 여러 POJO끼리 이벤트 기반 통신을 할 수 있다.
       - 송신기는 수신자 상관없이 이벤트 발생하고 수신자는 누가 이벤트를 발행했는지 알필요없다.
-2. spring-study-03-mvc : gradle 실행시  tomcatRun으로 실행하기 
-   spring-study-04-rest : rest API 처리 법, RSS 피드 생성, JSON, XML뷰 생
-   spring-study-05-async : 스프링 비동기 처리
+3. spring-study-03-mvc : gradle 실행시  tomcatRun으로 실행하기 
+4. spring-study-04-rest : rest API 처리 법, RSS 피드 생성, JSON, XML뷰 생성
+5. spring-study-05-async : 스프링 비동기 처리
 
 
   
